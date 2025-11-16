@@ -698,12 +698,31 @@ code {
   color: #888;
   text-transform: uppercase;
   letter-spacing: 1px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: transparent;
+  transition: background-color 0.3s ease, border-bottom-color 0.3s ease;
+}
+
+/* TOC title background when scrolling - triggered by JavaScript data-scrolled attribute */
+.md-sidebar--secondary > .md-sidebar__scrollwrap > .md-nav > .md-nav__title[data-scrolled],
+.md-nav--secondary > .md-nav__title[data-scrolled] {
+  background-color: #0e1113;
+  border-bottom-color: rgba(139, 107, 219, 0.3);
+  border-radius: 0.5rem 0.5rem 0 0;
 }
 
 [data-md-color-scheme="default"] .md-sidebar--secondary > .md-sidebar__scrollwrap > .md-nav > .md-nav__title,
 [data-md-color-scheme="default"] .md-nav--secondary > .md-nav__title {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   color: #9a9aaa;
+}
+
+[data-md-color-scheme="default"] .md-sidebar--secondary > .md-sidebar__scrollwrap > .md-nav > .md-nav__title[data-scrolled],
+[data-md-color-scheme="default"] .md-nav--secondary > .md-nav__title[data-scrolled] {
+  background-color: #1a1a1a;
+  border-bottom-color: rgba(139, 107, 219, 0.2);
 }
 
 .md-sidebar--secondary > .md-sidebar__scrollwrap > .md-nav > .md-nav__title .md-nav__button,
