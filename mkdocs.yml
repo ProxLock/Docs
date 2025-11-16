@@ -3,32 +3,40 @@ site_name: ProxLock
 theme:
   name: material
   palette:
-    # Dark mode (default)
-    - scheme: slate
-      primary: indigo
-      accent: indigo
-      toggle:
-        icon: material/brightness-7
-        name: Switch to light mode
     # Light mode
     - scheme: default
       primary: indigo
       accent: indigo
       toggle:
-        icon: material/brightness-4
+        icon: material/brightness-7
         name: Switch to dark mode
-  font:
-    text: Inter
-    code: Monaco
+    # Dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
   features:
-    - navigation.tabs
     - navigation.sections
     - navigation.expand
     - navigation.top
+    - navigation.indexes
     - search.suggest
     - search.highlight
-    - content.code.copy
     - content.code.annotate
+    - content.code.copy
+  font:
+    text: Inter
+    code: JetBrains Mono
 
 extra_css:
   - stylesheets/extra.css
+
+nav:
+  - Home: index.md
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com
