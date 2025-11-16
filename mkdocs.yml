@@ -35,6 +35,9 @@ extra_css:
 
 nav:
   - Home: index.md
+  - Getting Started: getting-started.md
+  - Web Dashboard Guide: web-dashboard.md
+  - iOS SDK Guide: ios-sdk.md
 
 extra:
   social:
