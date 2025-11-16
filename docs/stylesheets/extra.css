@@ -616,6 +616,7 @@ code {
   margin: 0.125rem 0;
   white-space: nowrap;
   line-height: 1.4;
+  position: relative;
 }
 
 [data-md-color-scheme="default"] .md-sidebar--secondary .md-nav__link,
@@ -737,6 +738,64 @@ code {
 
 .md-sidebar--secondary .md-sidebar__scrollwrap::-webkit-scrollbar-thumb:hover {
   background: rgba(139, 107, 219, 0.5);
+}
+
+/* Table of Contents - Tooltip/Overlay background for truncated text */
+.md-sidebar--secondary .md-nav__link[title]::before,
+.md-nav--secondary .md-nav__link[title]::before {
+  content: attr(title);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(139, 107, 219, 0.95) !important;
+  color: #ffffff;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 1000;
+  margin-bottom: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(139, 107, 219, 0.3);
+}
+
+.md-sidebar--secondary .md-nav__link[title]:hover::before,
+.md-nav--secondary .md-nav__link[title]:hover::before {
+  opacity: 1;
+}
+
+[data-md-color-scheme="default"] .md-sidebar--secondary .md-nav__link[title]::before,
+[data-md-color-scheme="default"] .md-nav--secondary .md-nav__link[title]::before {
+  background-color: rgba(139, 107, 219, 0.95) !important;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Alternative: Style native tooltip-like overlays if Material uses custom tooltips */
+.md-tooltip,
+.md-nav__link .md-tooltip,
+.md-sidebar--secondary .md-tooltip,
+.md-nav--secondary .md-tooltip {
+  background-color: rgba(139, 107, 219, 0.95) !important;
+  color: #ffffff !important;
+  border-radius: 0.5rem !important;
+  padding: 0.5rem 0.75rem !important;
+  border: 1px solid rgba(139, 107, 219, 0.3) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-md-color-scheme="default"] .md-tooltip,
+[data-md-color-scheme="default"] .md-nav__link .md-tooltip,
+[data-md-color-scheme="default"] .md-sidebar--secondary .md-tooltip,
+[data-md-color-scheme="default"] .md-nav--secondary .md-tooltip {
+  background-color: rgba(139, 107, 219, 0.95) !important;
+  color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
 }
 
 /* Main content area */
