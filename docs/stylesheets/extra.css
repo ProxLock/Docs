@@ -100,11 +100,29 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, "Inter", "SF Pro Display", system-ui, sans-serif;
 }
 
-/* Main Content Area */
+/* Main Content Area - No card styling on wrapper */
 .md-main__inner {
+  margin: 0;
+  padding: 0;
+}
+
+/* Primary Sidebar - Outside card, transparent */
+.md-sidebar--primary {
+  background: transparent;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.md-sidebar--primary .md-sidebar__scrollwrap {
+  padding: 1rem;
+}
+
+/* Main Content Area - Card styling */
+.md-content {
   background: var(--bg-card);
   border-radius: 1rem;
-  margin: 1rem;
+  margin: 1rem 1rem 1rem 0;
   padding: 1.5rem;
   border: 1px solid var(--border-default);
   backdrop-filter: blur(10px);
@@ -289,6 +307,74 @@ body {
 .md-nav__item--nested .md-nav__item--nested > .md-nav > .md-nav__item > .md-nav__link--active {
   padding-left: calc(1.5rem - 3px);
   border-left: 3px solid var(--md-primary-fg-color);
+}
+
+/* Table of Contents - Secondary Sidebar */
+.md-sidebar--secondary {
+  background: transparent;
+  border: none;
+}
+
+.md-sidebar--secondary .md-sidebar__scrollwrap {
+  padding: 1rem;
+}
+
+/* TOC Navigation Links */
+.md-sidebar--secondary .md-nav {
+  font-size: 0.875rem;
+}
+
+.md-sidebar--secondary .md-nav__link {
+  color: var(--text-muted);
+  transition: all 0.2s ease;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  margin: 0.25rem 0;
+  position: relative;
+  display: block;
+}
+
+.md-sidebar--secondary .md-nav__link:hover {
+  color: var(--text-secondary);
+  background: rgba(139, 107, 219, 0.1);
+}
+
+/* Active TOC item - highlighted when section is in view */
+.md-sidebar--secondary .md-nav__link--active {
+  color: var(--md-primary-fg-color) !important;
+  background: rgba(139, 107, 219, 0.15) !important;
+  border-left: 3px solid var(--md-primary-fg-color) !important;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  padding-left: calc(0.75rem - 3px);
+}
+
+/* TOC items that are in view but not the active one (blurred state) */
+.md-sidebar--secondary .md-nav__link[data-md-state="blur"] {
+  opacity: 0.6;
+}
+
+/* Ensure smooth transitions when TOC items become active */
+.md-sidebar--secondary .md-nav__item {
+  transition: all 0.2s ease;
+}
+
+/* Nested TOC items */
+.md-sidebar--secondary .md-nav__item--nested .md-nav__link {
+  padding-left: 1.25rem;
+  font-size: 0.8125rem;
+}
+
+.md-sidebar--secondary .md-nav__item--nested .md-nav__link--active {
+  padding-left: calc(1.25rem - 3px);
+}
+
+.md-sidebar--secondary .md-nav__item--nested .md-nav__item--nested .md-nav__link {
+  padding-left: 1.75rem;
+}
+
+.md-sidebar--secondary .md-nav__item--nested .md-nav__item--nested .md-nav__link--active {
+  padding-left: calc(1.75rem - 3px);
 }
 
 /* Headings */
@@ -498,10 +584,14 @@ hr {
 
 /* Responsive Adjustments */
 @media screen and (max-width: 76.1875em) {
-  .md-main__inner {
+  .md-content {
     margin: 0;
     border-radius: 0;
     padding: 1rem;
+  }
+  
+  .md-sidebar--primary .md-sidebar__scrollwrap {
+    padding: 0.5rem;
   }
 }
 
@@ -511,9 +601,11 @@ hr {
     background: white;
   }
   
-  .md-main__inner {
+  .md-content {
     background: white;
     border: none;
   }
 }
+
+
 
