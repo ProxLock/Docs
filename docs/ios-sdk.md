@@ -194,14 +194,16 @@ class APIService {
 
 ### Device Check Errors
 
-If you see Device Check errors:
+If you see Device Check errors, try the following:
+
 - Make sure **App Attest** is enabled in your target's capabilities
 - For simulator testing, ensure the `PROXLOCK_DEVICE_CHECK_BYPASS` environment variable is set
 - On real devices, Device Check should work automatically
 
 ### Request Failures
 
-If your requests are failing:
+If your requests are failing, check the following:
+
 - Verify your partial key and association ID are correct
 - Check that the destination URL is in your key's whitelisted URLs
 - Ensure you're using `session.bearerToken` in your Authorization header
@@ -209,10 +211,11 @@ If your requests are failing:
 
 ### Network Errors
 
-If you encounter network errors:
-- Verify your app has internet connectivity
-- Check that the ProxLock service is accessible
-- Review your request format and headers
+If you encounter network errors, verify the following:
+
+- Your app has internet connectivity
+- The ProxLock service is accessible
+- Your request format and headers are correct
 
 ## Next Steps
 
