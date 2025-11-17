@@ -721,7 +721,7 @@ code {
 
 [data-md-color-scheme="default"] .md-sidebar--secondary > .md-sidebar__scrollwrap > .md-nav > .md-nav__title[data-scrolled],
 [data-md-color-scheme="default"] .md-nav--secondary > .md-nav__title[data-scrolled] {
-  background-color: #1a1a1a;
+  background-color: rgba(255, 255, 255, 0.98);
   border-bottom-color: rgba(139, 107, 219, 0.2);
 }
 
