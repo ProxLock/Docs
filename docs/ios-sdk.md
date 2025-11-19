@@ -2,6 +2,8 @@
 
 This guide will help you integrate ProxLock into your iOS app to securely proxy your API requests.
 
+To see the ProxLock iOS SDK in action, check out our [Sample App](https://github.com/ProxLock/ProxLock-Demo)!
+
 ## Prerequisites
 
 Before you begin, make sure you have:
