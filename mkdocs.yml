@@ -2,6 +2,8 @@ site_name: ProxLock
 
 theme:
   name: material
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
   palette:
     # Light mode
     - scheme: default
