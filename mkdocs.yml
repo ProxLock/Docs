@@ -45,4 +45,6 @@ nav:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com
+      link: https://github.com/proxlock
+    - icon: material/web
+      link: https://proxlock.dev
