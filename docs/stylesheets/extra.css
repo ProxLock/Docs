@@ -58,15 +58,7 @@
   --md-default-bg-color: transparent;
 }
 
-/* Gradient text for site title */
-.md-header__title {
-  background: linear-gradient(90deg, #8b6bdb, #8b71c7);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 700;
-  letter-spacing: 1px;
-}
+
 
 /* Navigation links with purple accent */
 .md-nav__link--active {
