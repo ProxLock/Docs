@@ -6,12 +6,12 @@
   --accent-purple-2: #8b71c7;
   --accent-purple-3: #a58bff;
   --accent-purple-light: #cfc9ff;
-  
+
   /* Dark Mode Background Gradients */
   --bg-gradient-start: rgb(0, 54, 47);
   --bg-gradient-mid: rgb(0, 32, 29);
   --bg-gradient-end: #151615;
-  
+
   /* Light Mode Background Gradients */
   --bg-light-start: #f5f7f6;
   --bg-light-mid: #eef5f2;
@@ -20,23 +20,19 @@
 
 /* Dark Mode Background Gradient */
 [data-md-color-scheme="slate"] {
-  background: linear-gradient(
-    0deg,
-    var(--bg-gradient-start) 0%,
-    var(--bg-gradient-mid) 35%,
-    var(--bg-gradient-end) 100%
-  );
+  background: linear-gradient(0deg,
+      var(--bg-gradient-start) 0%,
+      var(--bg-gradient-mid) 35%,
+      var(--bg-gradient-end) 100%);
   background-attachment: fixed;
 }
 
 /* Light Mode Background Gradient */
 [data-md-color-scheme="default"] {
-  background: linear-gradient(
-    0deg,
-    var(--bg-light-start) 0%,
-    var(--bg-light-mid) 35%,
-    var(--bg-light-end) 100%
-  );
+  background: linear-gradient(0deg,
+      var(--bg-light-start) 0%,
+      var(--bg-light-mid) 35%,
+      var(--bg-light-end) 100%);
   background-attachment: fixed;
 }
 
@@ -333,53 +329,53 @@ code {
     background-color: rgba(20, 20, 24, 0.95) !important;
     backdrop-filter: blur(10px) !important;
   }
-  
+
   [data-md-color-scheme="default"] .md-sidebar--primary {
     background-color: rgba(255, 255, 255, 0.98) !important;
     backdrop-filter: blur(10px) !important;
   }
-  
+
   .md-sidebar {
     background-color: rgba(20, 20, 24, 0.95) !important;
     backdrop-filter: blur(10px) !important;
   }
-  
+
   [data-md-color-scheme="default"] .md-sidebar {
     background-color: rgba(255, 255, 255, 0.98) !important;
     backdrop-filter: blur(10px) !important;
   }
-  
+
   /* Mobile sidebar header spacing */
-  .md-sidebar--primary > .md-sidebar__scrollwrap > .md-nav > .md-nav__title {
+  .md-sidebar--primary>.md-sidebar__scrollwrap>.md-nav>.md-nav__title {
     padding: 1.5rem 1.5rem 1rem 1.5rem !important;
     margin-bottom: 0.75rem !important;
   }
-  
+
   /* Mobile sidebar navigation spacing */
   .md-sidebar--primary .md-nav {
     padding: 0 1rem 1rem 1rem !important;
   }
-  
+
   /* Mobile sidebar links - ensure proper spacing */
   .md-sidebar--primary .md-nav__link {
     padding: 0.75rem 1rem !important;
     margin: 0.125rem 0 !important;
   }
-  
+
   /* Mobile sidebar active link */
   .md-sidebar--primary .md-nav__link--active {
     padding-left: calc(1rem - 3px) !important;
   }
-  
+
   [data-md-color-scheme="default"] .md-sidebar--primary .md-nav__link--active {
     padding-left: calc(1rem - 3px) !important;
   }
-  
+
   /* Mobile sidebar nested items */
   .md-sidebar--primary .md-nav__item .md-nav__link {
     padding-left: 1.5rem !important;
   }
-  
+
   /* Table of contents inside mobile sidebar - make background fully solid */
   .md-sidebar--primary .md-nav--secondary,
   .md-drawer .md-nav--secondary {
@@ -389,31 +385,31 @@ code {
     margin: 0.75rem 0 !important;
     border: 1px solid rgba(139, 107, 219, 0.2);
   }
-  
+
   [data-md-color-scheme="default"] .md-sidebar--primary .md-nav--secondary,
   [data-md-color-scheme="default"] .md-drawer .md-nav--secondary {
     background-color: rgb(255, 255, 255) !important;
     border: 1px solid rgba(139, 107, 219, 0.2);
   }
-  
+
   /* TOC items inside mobile sidebar */
   .md-sidebar--primary .md-nav--secondary .md-nav__item,
   .md-drawer .md-nav--secondary .md-nav__item {
     margin-bottom: 0.125rem !important;
   }
-  
+
   .md-sidebar--primary .md-nav--secondary .md-nav__link,
   .md-drawer .md-nav--secondary .md-nav__link {
     padding: 0.5rem 0.75rem !important;
     font-size: 0.8125rem !important;
     color: #b0b0c0 !important;
   }
-  
+
   [data-md-color-scheme="default"] .md-sidebar--primary .md-nav--secondary .md-nav__link,
   [data-md-color-scheme="default"] .md-drawer .md-nav--secondary .md-nav__link {
     color: #5a5a6a !important;
   }
-  
+
   /* TOC title inside mobile sidebar */
   .md-sidebar--primary .md-nav--secondary .md-nav__title,
   .md-drawer .md-nav--secondary .md-nav__title {
@@ -424,17 +420,17 @@ code {
 }
 
 /* Sidebar header/logo - first title */
-.md-sidebar--primary > .md-sidebar__scrollwrap > .md-nav > .md-nav__title {
+.md-sidebar--primary>.md-sidebar__scrollwrap>.md-nav>.md-nav__title {
   padding: 2rem 1.5rem 1rem 1.5rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   margin-bottom: 1rem;
 }
 
-[data-md-color-scheme="default"] .md-sidebar--primary > .md-sidebar__scrollwrap > .md-nav > .md-nav__title {
+[data-md-color-scheme="default"] .md-sidebar--primary>.md-sidebar__scrollwrap>.md-nav>.md-nav__title {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.md-sidebar--primary > .md-sidebar__scrollwrap > .md-nav > .md-nav__title .md-nav__button {
+.md-sidebar--primary>.md-sidebar__scrollwrap>.md-nav>.md-nav__title .md-nav__button {
   font-size: 1.5rem;
   font-weight: 700;
   background: linear-gradient(90deg, #8b6bdb, #8b71c7);
@@ -518,7 +514,7 @@ code {
 }
 
 /* Primary sidebar section titles (not the main title) */
-.md-sidebar--primary .md-nav__item > .md-nav__link + .md-nav__title,
+.md-sidebar--primary .md-nav__item>.md-nav__link+.md-nav__title,
 .md-sidebar--primary .md-nav__item .md-nav__item .md-nav__title {
   font-size: 0.75rem;
   font-weight: 600;
@@ -530,7 +526,7 @@ code {
   margin-top: 0.5rem;
 }
 
-[data-md-color-scheme="default"] .md-sidebar--primary .md-nav__item > .md-nav__link + .md-nav__title,
+[data-md-color-scheme="default"] .md-sidebar--primary .md-nav__item>.md-nav__link+.md-nav__title,
 [data-md-color-scheme="default"] .md-sidebar--primary .md-nav__item .md-nav__item .md-nav__title {
   color: #9a9aaa;
 }
@@ -597,7 +593,7 @@ code {
   margin-bottom: 0.125rem;
 }
 
-.md-sidebar--secondary .md-nav__item:has(.md-nav) > .md-nav__link {
+.md-sidebar--secondary .md-nav__item:has(.md-nav)>.md-nav__link {
   margin-bottom: 0;
 }
 
@@ -688,8 +684,8 @@ code {
 }
 
 /* TOC title - styled like ProxLock title */
-.md-sidebar--secondary > .md-sidebar__scrollwrap > .md-nav > .md-nav__title,
-.md-nav--secondary > .md-nav__title {
+.md-sidebar--secondary>.md-sidebar__scrollwrap>.md-nav>.md-nav__title,
+.md-nav--secondary>.md-nav__title {
   padding: 1.5rem 0.75rem 1rem 0.25rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   margin-bottom: 1rem;
@@ -706,27 +702,27 @@ code {
 }
 
 /* TOC title background when scrolling - triggered by JavaScript data-scrolled attribute */
-.md-sidebar--secondary > .md-sidebar__scrollwrap > .md-nav > .md-nav__title[data-scrolled],
-.md-nav--secondary > .md-nav__title[data-scrolled] {
+.md-sidebar--secondary>.md-sidebar__scrollwrap>.md-nav>.md-nav__title[data-scrolled],
+.md-nav--secondary>.md-nav__title[data-scrolled] {
   background-color: #0e1113;
   border-bottom-color: rgba(139, 107, 219, 0.3);
   border-radius: 0.5rem 0.5rem 0 0;
 }
 
-[data-md-color-scheme="default"] .md-sidebar--secondary > .md-sidebar__scrollwrap > .md-nav > .md-nav__title,
-[data-md-color-scheme="default"] .md-nav--secondary > .md-nav__title {
+[data-md-color-scheme="default"] .md-sidebar--secondary>.md-sidebar__scrollwrap>.md-nav>.md-nav__title,
+[data-md-color-scheme="default"] .md-nav--secondary>.md-nav__title {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   color: #9a9aaa;
 }
 
-[data-md-color-scheme="default"] .md-sidebar--secondary > .md-sidebar__scrollwrap > .md-nav > .md-nav__title[data-scrolled],
-[data-md-color-scheme="default"] .md-nav--secondary > .md-nav__title[data-scrolled] {
+[data-md-color-scheme="default"] .md-sidebar--secondary>.md-sidebar__scrollwrap>.md-nav>.md-nav__title[data-scrolled],
+[data-md-color-scheme="default"] .md-nav--secondary>.md-nav__title[data-scrolled] {
   background-color: rgba(255, 255, 255, 0.98);
   border-bottom-color: rgba(139, 107, 219, 0.2);
 }
 
-.md-sidebar--secondary > .md-sidebar__scrollwrap > .md-nav > .md-nav__title .md-nav__button,
-.md-nav--secondary > .md-nav__title .md-nav__button {
+.md-sidebar--secondary>.md-sidebar__scrollwrap>.md-nav>.md-nav__title .md-nav__button,
+.md-nav--secondary>.md-nav__title .md-nav__button {
   font-size: 0.75rem;
   font-weight: 600;
   color: inherit;
@@ -923,7 +919,3 @@ article.md-content__inner.md-typeset {
   border-color: rgba(139, 107, 219, 0.4) !important;
   box-shadow: 0 4px 12px rgba(139, 107, 219, 0.2) !important;
 }
-
-
-
-

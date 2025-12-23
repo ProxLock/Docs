@@ -1,3 +1,7 @@
+---
+description: This guide will walk you through using the dashboard to add and manage your keys.
+---
+
 # Web Dashboard Guide
 
 The ProxLock web dashboard is where you manage your projects and API keys. This guide will walk you through using the dashboard to add and manage your keys.

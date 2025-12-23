@@ -1,3 +1,7 @@
+---
+description: "Protect and manage your API keys with ease."
+---
+
 # ProxLock Documentation
 
 Welcome to the ProxLock documentation! ProxLock helps you secure your API keys by proxying requests through a secure service and splitting your keys for enhanced protection.

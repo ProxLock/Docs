@@ -1,3 +1,7 @@
+---
+description: "This guide will help you integrate ProxLock into your iOS app to securely proxy your API requests."
+---
+
 # iOS SDK Guide
 
 This guide will help you integrate ProxLock into your iOS app to securely proxy your API requests.

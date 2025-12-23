@@ -1,4 +1,12 @@
 site_name: ProxLock
+site_url: https://proxlock.com
+plugins:
+  - search
+  - social:
+      cards_layout_options:
+          color: black
+          background_color: "white"
+          font_variant: 18pt
 
 theme:
   name: material
@@ -31,6 +39,8 @@ theme:
   font:
     text: Inter
     code: JetBrains Mono
+  icon:
+    repo: fontawesome/brands/github
 
 extra_css:
   - stylesheets/extra.css

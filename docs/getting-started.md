@@ -1,3 +1,7 @@
+---
+description: Welcome to ProxLock! This guide will help you get started with securing your API keys using ProxLock's proxy service.
+---
+
 # Getting Started with ProxLock
 
 Welcome to ProxLock! This guide will help you get started with securing your API keys using ProxLock's proxy service.
