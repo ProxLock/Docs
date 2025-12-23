@@ -1,0 +1,5 @@
+:root>* {
+    --md-primary-fg-color: #ad5bfe;
+    --md-accent-fg-color: #ad5bfe;
+    --md-accent-fg-color--transparent: rgba(173, 91, 254, 0.1);
+}

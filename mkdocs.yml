@@ -19,15 +19,15 @@ theme:
   palette:
     # Light mode
     - scheme: default
-      primary: indigo
-      accent: indigo
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-7
         name: Switch to dark mode
     # Dark mode
     - scheme: slate
-      primary: indigo
-      accent: indigo
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-4
         name: Switch to light mode
@@ -47,7 +47,7 @@ theme:
     repo: fontawesome/brands/github
 
 extra_css:
-  - stylesheets/extra.css
+  - stylesheets/less-extra.css
 
 extra_javascript:
   - javascripts/toc-scroll.js
