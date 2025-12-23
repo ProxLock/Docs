@@ -919,3 +919,8 @@ article.md-content__inner.md-typeset {
   border-color: rgba(139, 107, 219, 0.4) !important;
   box-shadow: 0 4px 12px rgba(139, 107, 219, 0.2) !important;
 }
+
+/* Source repository link - fix light mode */
+[data-md-color-scheme="default"] .md-source {
+  color: #000000 !important;
+}

@@ -1,5 +1,9 @@
 site_name: ProxLock
 site_url: https://proxlock.com
+
+repo_url: https://github.com/proxlock/docs
+repo_name: proxlock/docs
+
 plugins:
   - search
   - social:
