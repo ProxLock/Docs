@@ -2,4 +2,32 @@
     --md-primary-fg-color: #ad5bfe;
     --md-accent-fg-color: #ad5bfe;
     --md-accent-fg-color--transparent: rgba(173, 91, 254, 0.1);
+
+    /* Dark Mode Background Gradients */
+    --bg-gradient-start: rgb(0, 54, 47);
+    --bg-gradient-mid: rgb(0, 32, 29);
+    --bg-gradient-end: #151615;
+
+    /* Light Mode Background Gradients */
+    --bg-light-start: #f5f7f6;
+    --bg-light-mid: #eef5f2;
+    --bg-light-end: #e0ede8;
+}
+
+/* Dark Mode Background Gradient */
+[data-md-color-scheme="slate"] {
+    background: linear-gradient(0deg,
+            var(--bg-gradient-start) 0%,
+            var(--bg-gradient-mid) 35%,
+            var(--bg-gradient-end) 100%);
+    background-attachment: fixed;
+}
+
+/* Light Mode Background Gradient */
+[data-md-color-scheme="default"] {
+    background: linear-gradient(0deg,
+            var(--bg-light-start) 0%,
+            var(--bg-light-mid) 35%,
+            var(--bg-light-end) 100%);
+    background-attachment: fixed;
 }
