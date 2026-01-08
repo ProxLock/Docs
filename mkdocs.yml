@@ -57,6 +57,7 @@ nav:
   - Getting Started: getting-started.md
   - Web Dashboard Guide: web-dashboard.md
   - iOS SDK Guide: ios-sdk.md
+  - REST API Guide: rest-api.md
 
 extra:
   social:

@@ -1,0 +1,200 @@
+---
+description: "Learn how to make direct REST requests to the ProxLock proxy service for secure API key usage."
+---
+
+# REST API Guide
+
+This guide covers how to make direct REST requests to the ProxLock proxy service. Use this approach when you're building integrations outside of the iOS SDK or when you need more control over how requests are proxied.
+
+## Overview
+
+ProxLock's proxy endpoint allows you to securely forward requests to external APIs without exposing your full API keys. The proxy reconstructs your complete API key on the server side and forwards your request to the target service.
+
+## Proxy Endpoint
+
+```
+POST https://api.proxlock.dev/proxy
+```
+
+All proxied requests go through this single endpoint. The target destination, HTTP method, and authentication details are specified via headers.
+
+## Required Headers
+
+Every proxy request must include the following headers:
+
+| Header | Description | Example |
+|--------|-------------|---------|
+| `ProxLock_ASSOCIATION_ID` | Your API key's association ID | `abc123-def456-...` |
+| `ProxLock_HTTP_METHOD` | The HTTP method for the target request | `GET`, `POST`, `PUT`, `DELETE` |
+| `ProxLock_DESTINATION` | The full destination URL for the proxied request | `https://api.openai.com/v1/chat/completions` |
+| `ProxLock_VALIDATION_MODE` | The validation mode for the request | `device-check`, `web` |
+
+### Header Forwarding
+
+All headers you include in your request are forwarded to the target service **as-is**, with the exception of the ProxLock-specific headers (`ProxLock_ASSOCIATION_ID`, `ProxLock_HTTP_METHOD`, `ProxLock_DESTINATION`, `ProxLock_VALIDATION_MODE`), which are stripped before forwarding.
+
+This means you can include any headers the target API requires—such as `Content-Type`, `Accept`, `Authorization`, or custom headers—and they will be passed through unchanged.
+
+### Validation Modes
+
+ProxLock supports multiple validation modes to authenticate requests:
+
+- **`device-check`**: Uses Apple's Device Check framework to validate that the request comes from a legitimate iOS device. This is the most secure mode and is required for iOS apps.
+- **`web`**: Uses web-based validation for requests originating from web applications. Requires additional web authentication setup in your project.
+
+## Partial Key Usage
+
+ProxLock uses a split-key architecture where your complete API key is never stored in your application. Instead, you have a **partial key** that gets combined with the server-side portion.
+
+### Including Your Partial Key
+
+Include your partial key in any header by wrapping it with the ProxLock placeholder syntax:
+
+```
+%ProxLock_PARTIAL_KEY:<your_partial_key>%
+```
+
+This placeholder will be replaced with the complete key before forwarding to the target service.
+
+### Example: Authorization Header
+
+Most APIs use a Bearer token in the Authorization header. Here's how to include your partial key:
+
+```
+Authorization: Bearer %ProxLock_PARTIAL_KEY:pk_abc123xyz%
+```
+
+When ProxLock processes this request, it will:
+
+1. Find the `%ProxLock_PARTIAL_KEY:pk_abc123xyz%` placeholder
+2. Look up the associated full key using your Association ID
+3. Replace the placeholder with the complete API key
+4. Forward the request to the destination with the full key
+
+## Request Body
+
+The request body is forwarded **as-is** to the target service. Include any data that the target API expects:
+
+- JSON payloads
+- Form data
+- Raw text or binary data
+
+The `Content-Type` header you set will be preserved and forwarded to the target.
+
+## Complete Example
+
+Here's a complete example of proxying a request to OpenAI's API:
+
+### cURL Example
+
+```bash
+curl -X POST "https://api.proxlock.dev/proxy" \
+  -H "Content-Type: application/json" \
+  -H "ProxLock_ASSOCIATION_ID: your-association-id" \
+  -H "ProxLock_HTTP_METHOD: POST" \
+  -H "ProxLock_DESTINATION: https://api.openai.com/v1/chat/completions" \
+  -H "ProxLock_VALIDATION_MODE: web" \
+  -H "Authorization: Bearer %ProxLock_PARTIAL_KEY:your-partial-key%" \
+  -d '{
+    "model": "gpt-4",
+    "messages": [
+      {"role": "user", "content": "Hello!"}
+    ]
+  }'
+```
+
+### JavaScript/Fetch Example
+
+```javascript
+const response = await fetch("https://api.proxlock.dev/proxy", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "ProxLock_ASSOCIATION_ID": "your-association-id",
+    "ProxLock_HTTP_METHOD": "POST",
+    "ProxLock_DESTINATION": "https://api.openai.com/v1/chat/completions",
+    "ProxLock_VALIDATION_MODE": "web",
+    "Authorization": "Bearer %ProxLock_PARTIAL_KEY:your-partial-key%"
+  },
+  body: JSON.stringify({
+    model: "gpt-4",
+    messages: [
+      { role: "user", content: "Hello!" }
+    ]
+  })
+});
+
+const data = await response.json();
+console.log(data);
+```
+
+### Python Example
+
+```python
+import requests
+
+response = requests.post(
+    "https://api.proxlock.dev/proxy",
+    headers={
+        "Content-Type": "application/json",
+        "ProxLock_ASSOCIATION_ID": "your-association-id",
+        "ProxLock_HTTP_METHOD": "POST",
+        "ProxLock_DESTINATION": "https://api.openai.com/v1/chat/completions",
+        "ProxLock_VALIDATION_MODE": "web",
+        "Authorization": "Bearer %ProxLock_PARTIAL_KEY:your-partial-key%"
+    },
+    json={
+        "model": "gpt-4",
+        "messages": [
+            {"role": "user", "content": "Hello!"}
+        ]
+    }
+)
+
+print(response.json())
+```
+
+## Response
+
+The proxy returns the response from the target service **as-is**, including:
+
+- **Status code**: The HTTP status code from the target API
+- **Headers**: Response headers from the target API
+- **Body**: The response body from the target API
+
+## Error Handling
+
+### ProxLock Errors
+
+If there's an issue with your proxy request, ProxLock will return an error before reaching the target service:
+
+| Status Code | Description |
+|-------------|-------------|
+| `400` | Missing required headers or invalid request format |
+| `401` | Invalid Association ID or Partial Key |
+| `402` | Billing issue with your account (e.g., payment required, subscription expired) |
+| `403` | Destination URL not in whitelist, or validation failed |
+| `429` | Rate limit exceeded for this API key |
+| `500` | Internal proxy error |
+
+### Target API Errors
+
+If the target API returns an error, that error is passed through to you unchanged. Check the status code and response body for details about what went wrong with the target service.
+
+## Security Considerations
+
+1. **Use HTTPS**: Always use HTTPS for both the proxy endpoint and your target destinations.
+
+2. **Whitelist URLs carefully**: Only add URLs to your whitelist that your application actually needs to access.
+
+3. **Validate on the right mode**: Use `device-check` for iOS apps and `web` for web applications with proper web authentication setup.
+
+## Rate Limiting
+
+ProxLock respects the rate limits you configure for each API key in the web dashboard. If you exceed your configured rate limit, requests will be rejected with a `429 Too Many Requests` status code.
+
+## Next Steps
+
+- [Web Dashboard Guide](web-dashboard.md) - Learn how to manage your API keys and configure whitelists
+- [iOS SDK Guide](ios-sdk.md) - Use the iOS SDK for a simpler integration on Apple platforms
+- [Getting Started](getting-started.md) - Overview of ProxLock and initial setup

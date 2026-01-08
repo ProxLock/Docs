@@ -20,6 +20,7 @@ ProxLock is a secure API proxy service designed to protect your API keys in mobi
 - [Getting Started](getting-started.md) - Overview and quick start guide
 - [Web Dashboard Guide](web-dashboard.md) - Learn how to create projects and add API keys
 - [iOS SDK Guide](ios-sdk.md) - Integrate ProxLock into your iOS app
+- [REST API Guide](rest-api.md) - Make direct REST requests to the proxy service
 
 ## Getting Help
 
