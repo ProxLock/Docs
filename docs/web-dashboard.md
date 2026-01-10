@@ -149,11 +149,7 @@ For Android apps, you can set up Google Play Integrity to validate that requests
 
 ### Prerequisites
 
-Before setting up Play Integrity, you'll need:
-
-- Your Android app's **Package Name** (e.g., `com.example.myapp`)
-- A **Google Cloud Service Account** with Play Integrity API access
-- The Service Account's **JSON key file**
+See the [Play Integrity guide](play-integrity.md) for more information.
 
 ### Uploading Play Integrity Configuration
 
