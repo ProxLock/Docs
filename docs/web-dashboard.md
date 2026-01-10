@@ -129,6 +129,43 @@ After uploading a Device Check key, you'll see a **Bypass Token**. This token is
 - Set it as an environment variable: `PROXLOCK_DEVICE_CHECK_BYPASS`
 - Use this when testing in the simulator (Device Check only works on real devices)
 
+## Web Requests
+
+ProxLock supports web-based requests for applications that aren't running on iOS or Android devices.
+
+> **WARNING:** Enabling web requests for an API key **effectively disables all device-based protections**. Without Device Check or Play Integrity validation, anyone with your partial key can make requests. **You should always enforce a rate limit** on keys that have web requests enabled.
+
+### Enabling Web Requests
+
+1. When creating or editing an API key, toggle **"Enable web requesting"** to enabled
+2. Set an appropriate **Rate Limit** (requests per minute) to prevent abuse
+3. Click **"Create Key"** or **"Update Key"** to save
+
+Web requests use the `web` validation mode when calling the proxy API.
+
+## Google Play Integrity Setup
+
+For Android apps, you can set up Google Play Integrity to validate that requests come from legitimate Android devices.
+
+### Prerequisites
+
+Before setting up Play Integrity, you'll need:
+
+- Your Android app's **Package Name** (e.g., `com.example.myapp`)
+- A **Google Cloud Service Account** with Play Integrity API access
+- The Service Account's **JSON key file**
+
+### Uploading Play Integrity Configuration
+
+1. In your project dashboard, scroll to the **Google Play Integrity** section
+2. Click **"+ Upload Play Integrity Key"**
+3. Fill in the required information:
+   - **Android Package Name**: Your app's package name (e.g., `com.example.myapp`)
+   - **Service Account JSON**: Upload or paste your Google Cloud service account JSON key
+4. Click **"Upload"**
+
+Once configured, your Android app can use the `play-integrity` validation mode when making proxy requests.
+
 ## Managing Projects
 
 ### Editing a Project
