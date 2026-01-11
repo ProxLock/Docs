@@ -27,4 +27,5 @@ To get started with ProxLock, you'll need to:
 
 - [Web Dashboard Guide](web-dashboard.md) - Learn how to create projects and add API keys
 - [iOS SDK Guide](ios-sdk.md) - Learn how to integrate ProxLock into your iOS app
-
+- [Play Integrity Guide](play-integrity.md) - Learn how to integrate Play Integrity into your Android app
+- [REST API Guide](rest-api.md) - Learn how to use ProxLock's REST API
