@@ -63,8 +63,12 @@ Enable the Play Integrity API in the [Google Cloud Console](https://console.clou
 3. Scroll to the **Google Play Integrity** section
 4. Click **"+ Upload Play Integrity Key"**
 5. Enter your **Android Package Name** (e.g., `com.example.myapp`)
-6. Upload or paste your **Service Account JSON** key
-7. Click **"Upload"**
+6. **Configure Allowed App Recognition Verdicts**:
+    - **Play Recognized** (Recommended): The app and certificate match the versions distributed by Google Play.
+    - **Unrecognized Version** (Development): The certificate or package name does not match Google Play records (useful for development builds).
+    - **Unevaluated** (Not Recommended): Application integrity was not evaluated.
+7. Upload or paste your **Service Account JSON** key
+8. Click **"Upload"**
 
 Once uploaded, you'll see the configuration details including the service account client email.
 
