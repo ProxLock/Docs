@@ -26,7 +26,7 @@ Before you begin, make sure you have:
 1. In Xcode, go to **File** → **Add Package Dependencies...**
 2. Enter the repository URL:
    ```
-   https://github.com/APIProxy/proxlock-ios
+   https://github.com/ProxLock/proxlock-ios
    ```
 3. Select the version or branch you want to use
 4. Add the package to your target
@@ -37,7 +37,7 @@ Add ProxLock to your `Package.swift` file:
 
 ```swift
 dependencies: [
-    .package(url: "https://github.com/APIProxy/proxlock-ios", from: "0.1.0")
+    .package(url: "https://github.com/ProxLock/proxlock-ios", from: "0.1.0")
 ]
 ```
 
