@@ -78,7 +78,7 @@ Create a `PLSession` instance with your credentials. We recommend creating one s
 ```swift
 let session = PLSession(
     partialKey: "your-partial-key-here",
-    assosiationID: "your-association-id-here"
+    associationID: "your-association-id-here"
 )
 ```
 
@@ -161,27 +161,27 @@ import ProxLock
 
 class APIService {
     private let session: PLSession
-    
+
     init(partialKey: String, associationID: String) {
         self.session = PLSession(
             partialKey: partialKey,
-            assosiationID: associationID
+            associationID: associationID
         )
     }
-    
+
     func fetchUsers() async throws -> [User] {
         var request = URLRequest(url: URL(string: "https://api.example.com/users")!)
         request.httpMethod = "GET"
         request.setValue("Bearer \(session.bearerToken)", forHTTPHeaderField: "Authorization")
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
+
         let (data, response) = try await session.data(for: request)
-        
+
         guard let httpResponse = response as? HTTPURLResponse,
               httpResponse.statusCode == 200 else {
             throw APIError.invalidResponse
         }
-        
+
         let users = try JSONDecoder().decode([User].self, from: data)
         return users
     }
@@ -227,4 +227,3 @@ If you encounter network errors, verify the following:
 
 - Review the [Web Dashboard Guide](web-dashboard.md) to learn how to manage your keys
 - Check out the [Getting Started](getting-started.md) guide for an overview
-
