@@ -125,15 +125,27 @@ let proxiedRequest = try await session.processURLRequest(request)
 let (data, response) = try await URLSession.shared.data(for: proxiedRequest)
 ```
 
-## Using the Bearer Token
+## Using the Partial Key Placeholder
 
-ProxLock automatically replaces the `bearerToken` placeholder in your requests. Use `session.bearerToken` wherever you would normally use your full bearer token:
+The `session.bearerToken` property returns the partial key placeholder string. ProxLock will replace this placeholder with your full API key wherever it appears in your request.
+
+### In Authorization Header
 
 ```swift
-// The bearerToken property returns: "%ProxLock_PARTIAL_KEY:your-partial-key%"
-// ProxLock will replace this with the actual bearer token server-side
 request.setValue("Bearer \(session.bearerToken)", forHTTPHeaderField: "Authorization")
 ```
+
+### In Custom Headers
+
+You can use it in custom headers as well:
+
+```swift
+request.setValue(session.bearerToken, forHTTPHeaderField: "X-API-Key")
+```
+
+### In Body Parameters
+
+Due to privacy concerns, we do not currently support including the partial key placeholder in the body of your request. If you want this feature, please reach out and let us know at support@proxlock.dev.
 
 **Important**: Always use `session.bearerToken` instead of your full API key. Never hardcode your full API key in your app!
 

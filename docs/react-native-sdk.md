@@ -36,18 +36,18 @@ cd ios && pod install
 2.  **Create a ProxLockSession instance**:
 
     ```typescript
-    import { ProxLockSession } from '@proxlock/react-native';
-    import { Platform } from 'react-native';
+    import { ProxLockSession } from "@proxlock/react-native";
+    import { Platform } from "react-native";
 
     // Android configuration is required if you are targeting Android
     const androidConfig = {
-      cloudProjectNumber: 'your-google-cloud-project-number',
+      cloudProjectNumber: "your-google-cloud-project-number",
     };
 
     const session = new ProxLockSession(
-      'your-partial-key',
-      'your-association-id',
-      Platform.OS === 'android' ? androidConfig : undefined
+      "your-partial-key",
+      "your-association-id",
+      Platform.OS === "android" ? androidConfig : undefined,
     );
     ```
 
@@ -60,14 +60,14 @@ The easiest way to make requests is using the `fetch` method, which is a drop-in
 ```typescript
 // Make the request through ProxLock
 try {
-  const response = await session.fetch('https://api.example.com/users', {
-    method: 'GET',
+  const response = await session.fetch("https://api.example.com/users", {
+    method: "GET",
     headers: {
-      'Authorization': `Bearer ${session.bearerToken}`,
-      'Content-Type': 'application/json',
+      Authorization: `Bearer ${session.bearerToken}`,
+      "Content-Type": "application/json",
     },
   });
-  
+
   const data = await response.json();
   // Handle the response
 } catch (error) {
@@ -82,41 +82,55 @@ If you need more control or are using a different networking library (like Axios
 ```typescript
 // Get the secure headers for your request
 const proxLockHeaders = await session.getRequestHeaders(
-  'https://api.example.com/users',
-  'GET'
+  "https://api.example.com/users",
+  "GET",
 );
 
 // Combine with your existing headers
 const headers = {
   ...proxLockHeaders,
-  'Authorization': `Bearer ${session.bearerToken}`,
-  'Content-Type': 'application/json',
+  Authorization: `Bearer ${session.bearerToken}`,
+  "Content-Type": "application/json",
 };
 
 // Use the headers with your preferred client (e.g., standard fetch)
 // Note: ProxLock requests must always be POST to the proxy URL
-const response = await fetch('https://api.proxlock.dev/proxy', {
-  method: 'POST',
+const response = await fetch("https://api.proxlock.dev/proxy", {
+  method: "POST",
   headers: headers,
   // Your original body goes here if it exists
 });
 ```
 
-### Bearer Token Replacement
+### Using the Partial Key Placeholder
 
-ProxLock automatically replaces the `bearerToken` placeholder in your requests. Use `session.bearerToken` wherever you would normally use your full bearer token:
+The `session.bearerToken` property returns the partial key placeholder string. ProxLock will replace this placeholder with your full API key wherever it appears in your request.
+
+#### In Authorization Header
 
 ```typescript
-// The bearerToken property returns: "%ProxLock_PARTIAL_KEY:your-partial-key%"
-// ProxLock will replace this with the actual bearer token server-side
 const authHeader = `Bearer ${session.bearerToken}`;
 ```
+
+#### In Custom Headers
+
+You can use it in custom headers as well:
+
+```typescript
+const headers = {
+  "X-API-Key": session.bearerToken,
+};
+```
+
+#### In Body Parameters
+
+Due to privacy concerns, we do not currently support including the partial key placeholder in the body of your request. If you want this feature, please reach out and let us know at support@proxlock.dev.
 
 ### Platform Integration
 
 #### iOS
 
-ProxLock uses Apple's DeviceCheck framework for device validation. This generally happens automatically. 
+ProxLock uses Apple's DeviceCheck framework for device validation. This generally happens automatically.
 
 > **Note**: For `ProxLockSession` and ProxLock to work correctly on iOS, you must enable **App Attest** in your `Signing & Capabilities` tab for the target in Xcode.
 
