@@ -106,6 +106,8 @@ const response = await fetch("https://api.proxlock.dev/proxy", {
 
 The `session.bearerToken` property returns the partial key placeholder string. ProxLock will replace this placeholder with your full API key wherever it appears in your request.
 
+> **WARNING:** Whichever header you use to pass the partial key _must_ be added to this key's "**Whitelisted Headers**" list in the dashboard. If the header is not whitelisted, the proxy will not replace your partial key placeholder with the real API key.
+
 #### In Authorization Header
 
 ```typescript

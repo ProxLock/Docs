@@ -129,6 +129,8 @@ let (data, response) = try await URLSession.shared.data(for: proxiedRequest)
 
 The `session.bearerToken` property returns the partial key placeholder string. ProxLock will replace this placeholder with your full API key wherever it appears in your request.
 
+> **WARNING:** Whichever header you use to inject the `session.bearerToken` into (e.g., `Authorization` or `X-API-Key`) **must be added** to your key's "Whitelisted Headers" in the ProxLock dashboard. If it is not whitelisted, the proxy will not substitute it.
+
 ### In Authorization Header
 
 ```swift
@@ -224,6 +226,7 @@ If your requests are failing, check the following:
 
 - Verify your partial key and association ID are correct
 - Check that the destination URL is in your key's whitelisted URLs
+- Verify that the header you are injecting your partial key into is in your key's whitelisted headers
 - Ensure you're using `session.bearerToken` in your Authorization header
 - Check the response status code for more details
 
