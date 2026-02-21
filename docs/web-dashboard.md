@@ -35,27 +35,27 @@ Once you're in a project, you can add API keys that you want to protect.
 ### Step 2: Fill in Key Information
 
 1. **Name** (required)
-   - Enter a descriptive name for your API key
-   - Examples: "OpenAI", "Stripe", "My API Key"
-   - Tip: If you use a popular API name (like "OpenAI" or "Claude"), the whitelisted URLs will be automatically suggested
+      - Enter a descriptive name for your API key
+      - Examples: "OpenAI", "Stripe", "My API Key"
+      - Tip: If you use a popular API name (like "OpenAI" or "Claude"), the whitelisted URLs will be automatically suggested
 
 2. **Description** (optional)
-   - Add a description to help you remember what this key is used for
-   - Example: "Used for GPT-4 requests in production"
+      - Add a description to help you remember what this key is used for
+      - Example: "Used for GPT-4 requests in production"
 
 3. **Full API Key** (required)
-   - Paste your complete API key here
-   - ⚠️ **Important**: This key will be split and stored securely. You'll only see your partial key once after creation, so make sure to copy it!
+      - Paste your complete API key here
+      - ⚠️ **Important**: This key will be split and stored securely. You'll only see your partial key once after creation, so make sure to copy it!
 
 4. **Whitelisted URLs** (required)
-   - Add at least one URL that this key is allowed to access
-   - You can add multiple URLs by typing each one and clicking "Add"
-   - URLs are treated as wildcards (e.g., "api.example.com" matches "api.example.com/*")
-   - You don't need to include the protocol (http:// or https://)
-   - Examples:
-     - `api.openai.com`
-     - `api.anthropic.com`
-     - `api.stripe.com/v1`
+      - Add at least one URL that this key is allowed to access
+      - You can add multiple URLs by typing each one and clicking "Add"
+      - URLs are treated as wildcards (e.g., "api.example.com" matches "api.example.com/\*")
+      - You don't need to include the protocol (http:// or https://)
+      - Examples:
+         - `api.openai.com`
+         - `api.anthropic.com`
+         - `api.stripe.com/v1`
 
 ### Step 3: Save Your Partial Key
 
