@@ -70,6 +70,8 @@ This placeholder will be replaced with the complete key before forwarding to the
 
 You can use your partial key placeholder in any header or even in the request body. ProxLock will replace it wherever it finds it.
 
+> **WARNING:** Whichever HTTP header you use to pass the partial key _must_ be added to this key's "**Whitelisted Headers**" list in the dashboard. If the header is not whitelisted, the proxy will not replace your partial key placeholder with the real API key, and the destination API will likely reject your request.
+
 #### Authorization Header
 
 Most APIs use a Bearer token in the Authorization header.
@@ -209,7 +211,7 @@ If the target API returns an error, that error is passed through to you unchange
 
 1. **Use HTTPS**: Always use HTTPS for both the proxy endpoint and your target destinations.
 
-2. **Whitelist URLs carefully**: Only add URLs to your whitelist that your application actually needs to access.
+2. **Whitelist URLs and Headers carefully**: Only add the URLs and Headers to your whitelist that your application actually needs to access and use.
 
 3. **Validate on the right mode**: Use `device-check` for iOS apps and `web` for web applications with proper web authentication setup.
 

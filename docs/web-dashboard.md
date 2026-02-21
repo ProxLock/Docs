@@ -35,27 +35,34 @@ Once you're in a project, you can add API keys that you want to protect.
 ### Step 2: Fill in Key Information
 
 1. **Name** (required)
-   - Enter a descriptive name for your API key
-   - Examples: "OpenAI", "Stripe", "My API Key"
-   - Tip: If you use a popular API name (like "OpenAI" or "Claude"), the whitelisted URLs will be automatically suggested
+      - Enter a descriptive name for your API key
+      - Examples: "OpenAI", "Stripe", "My API Key"
+      - Tip: If you use a popular API name (like "OpenAI" or "Claude"), the whitelisted URLs will be automatically suggested
 
 2. **Description** (optional)
-   - Add a description to help you remember what this key is used for
-   - Example: "Used for GPT-4 requests in production"
+      - Add a description to help you remember what this key is used for
+      - Example: "Used for GPT-4 requests in production"
 
 3. **Full API Key** (required)
-   - Paste your complete API key here
-   - ⚠️ **Important**: This key will be split and stored securely. You'll only see your partial key once after creation, so make sure to copy it!
+      - Paste your complete API key here
+      - ⚠️ **Important**: This key will be split and stored securely. You'll only see your partial key once after creation, so make sure to copy it!
 
 4. **Whitelisted URLs** (required)
-   - Add at least one URL that this key is allowed to access
-   - You can add multiple URLs by typing each one and clicking "Add"
-   - URLs are treated as wildcards (e.g., "api.example.com" matches "api.example.com/*")
-   - You don't need to include the protocol (http:// or https://)
-   - Examples:
-     - `api.openai.com`
-     - `api.anthropic.com`
-     - `api.stripe.com/v1`
+      - Add at least one URL that this key is allowed to access
+      - You can add multiple URLs by typing each one and clicking "Add"
+      - URLs are treated as wildcards (e.g., "api.example.com" matches "api.example.com/\*")
+      - You don't need to include the protocol (http:// or https://)
+      - Examples:
+         - `api.openai.com`
+         - `api.anthropic.com`
+         - `api.stripe.com/v1`
+
+5. **Whitelisted Headers** (required)
+      - Add the specific HTTP headers where your partial key will be passed. If your partial key is sent in a header that is not in this list, the proxy will not substitute it.
+      - You can add multiple headers by typing each one and clicking "Add"
+      - Examples:
+         - `Authorization`
+         - `x-api-key`
 
 ### Step 3: Save Your Partial Key
 
@@ -77,10 +84,12 @@ Both of these values are also visible on the key card in your dashboard, so you 
 ### Viewing Key Details
 
 Each key card shows:
+
 - Key name and description
 - **Association ID**: The unique identifier for this key
 - **Key ID**: The internal ID for this key
 - **Whitelisted URLs**: The URLs this key is allowed to access
+- **Whitelisted Headers**: The specific HTTP headers this key expects to receive the partial key in
 
 ### Editing a Key
 
@@ -89,6 +98,7 @@ Each key card shows:
    - Key name
    - Description
    - Whitelisted URLs (add or remove)
+   - Whitelisted Headers (add or remove)
 3. Click **"Update Key"** to save changes
 
 ### Deleting a Key
@@ -184,4 +194,3 @@ Once configured, your Android app can use the `play-integrity` validation mode w
 - **Save your partial keys**: Copy and store your partial keys securely when you create them
 - **Whitelist carefully**: Only add the URLs that your app actually needs to access
 - **Test with bypass token**: Use the Device Check bypass token when testing in the iOS Simulator
-
