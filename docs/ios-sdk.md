@@ -52,6 +52,24 @@ Before you can use ProxLock in your app, you need to get your credentials from t
 
 ## Setting Up App Attest
 
+### Getting Your Apple DeviceCheck Configuration
+> **Note:** You must have an Apple Developer account to create a DeviceCheck key.
+
+1. Log in to the [Apple Developer web portal](https://developer.apple.com/account)
+2. Scroll down to Membership details and copy your **Team ID**. you will need this for later.
+3. Scroll back up to **Certificates, Identifiers & Profiles**
+4. Click on **Keys** in the center of the card
+5. Create a new key
+6. Select **DeviceCheck** as the key capability and press "register"
+7. Copy the **Key ID** and **Download** the key file
+8. In the [ProxLock web portal](https://app.proxlock.dev), open your project and scroll down to the DeviceCheck section
+9. Click on "+ Upload DeviceCheck Key"
+10. Fill in your Key ID and Team ID in the ProxLock web portal in the DeviceCheck section
+11. Upload the key file by clicking on "Upload Key File" button
+
+> **WARNING:** Entering the wrong Key ID or Team ID will result in your requests being rejected.
+
+### Enabling App Attest
 ProxLock requires Apple's Device Check framework, which needs App Attest to be enabled:
 
 1. In Xcode, select your project in the navigator
@@ -216,6 +234,7 @@ class APIService {
 
 If you see Device Check errors, try the following:
 
+- Check that your DeviceCheck configuration is fully correct
 - Make sure **App Attest** is enabled in your target's capabilities
 - For simulator testing, ensure the `PROXLOCK_DEVICE_CHECK_BYPASS` environment variable is set
 - On real devices, Device Check should work automatically

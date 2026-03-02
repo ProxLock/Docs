@@ -113,14 +113,21 @@ For iOS apps, you'll need to set up Apple Device Check to enable device validati
 
 ### Uploading a Device Check Key
 
-1. In your project dashboard, scroll to the **Apple Device Check** section
-2. Click **"+ Upload DeviceCheck Key"**
-3. Choose **"Upload New Key"** mode
-4. Fill in the required information:
-   - **Team ID**: Your Apple Developer Team ID (exactly 10 characters)
-   - **Key ID**: The ID of your Device Check key
-   - **Private Key**: Upload your `.p8` file or paste the PEM-formatted private key
-5. Click **"Upload Key"**
+> **Note:** You must have an Apple Developer account to create a DeviceCheck key.
+
+1. Log in to the [Apple Developer web portal](https://developer.apple.com/account)
+2. Scroll down to Membership details and copy your **Team ID**. you will need this for later.
+3. Scroll back up to **Certificates, Identifiers & Profiles**
+4. Click on **Keys** in the center of the card
+5. Create a new key
+6. Select **DeviceCheck** as the key capability and press "register"
+7. Copy the **Key ID** and **Download** the key file
+8. In the [ProxLock web portal](https://app.proxlock.dev), open your project and scroll down to the DeviceCheck section
+9. Click on "+ Upload DeviceCheck Key"
+10. Fill in your Key ID and Team ID in the ProxLock web portal in the DeviceCheck section
+11. Upload the key file by clicking on "Upload Key File" button
+
+> **WARNING:** Entering the wrong Key ID or Team ID will result in your requests being rejected.
 
 ### Linking an Existing Device Check Key
 
