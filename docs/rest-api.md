@@ -154,6 +154,52 @@ const data = await response.json();
 console.log(data);
 ```
 
+### Javascript wrapper function
+
+```javascript
+  // You should set your association id somewhere either before or
+  // inside of this function
+  const ASSOCIATION_ID = "your-association-id";
+
+  // wrapper function to drop-in replace any existing fetch() functions
+  // you already have
+  async function APIFetch(resource, options) {
+    const req = new Request(resource, options);
+
+    const headers = new Headers(req.headers);
+
+    headers.set("PROXLOCK_ASSOCIATION_ID", ASSOCIATION_ID);
+    headers.set("PROXLOCK_HTTP_METHOD", req.method);
+    headers.set("PROXLOCK_DESTINATION", req.url);
+    headers.set("PROXLOCK_VALIDATION_MODE", "web");
+
+    return fetch("https://api.proxlock.dev/proxy", {
+        method: "POST",
+        headers,
+        body: req.body,
+        duplex: "half",
+    });
+  }
+
+  
+  // now you can just use APIFetch anywhere you would use fetch, in
+  // exactly the same way. Just remember to put your partial key in
+  const response = await APIFetch("https://api.openai.com/v1/chat/completions", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer %ProxLock_PARTIAL_KEY:your-partial-key%",
+    },
+    body: JSON.stringify({
+      model: "gpt-4",
+      messages: [{ role: "user", content: "Hello!" }],
+    }),
+  });
+
+  const data = await response.json();
+  console.log(data);
+```
+
 ### Python Example
 
 ```python
